@@ -10,10 +10,12 @@ export default Ember.Component.extend({
   showDetail: false,
   isHidden: true,
   windowHeight: null,
-  wormholeDest: 'ember-application',
+  hasLoaded: false,
+  wormholeDest: 'ember-image-zoom-wormhole-dest',
 
 
   showThumbnail: computed.not('showDetail'),
+
   $destImg: computed(function(){
     return $(`#${this.get('wormholeDest')} img`);
   }),
@@ -30,8 +32,21 @@ export default Ember.Component.extend({
     return this.get('windowHeight') / this.get('imageHeight');
   }),
 
+  setInitialTranslate(event){
+    this.send('mouseMove', event);
+    this.set('isHidden', false);
+  },
+
   didInsertElement(){
     this.set('windowHeight', $(window).height());
+
+    if(!$(`#${this.get('wormholeDest')}`).length){
+      $('.ember-application').append(`<div id=${this.get('wormholeDest')}></div>`);
+    }
+  },
+
+  willDestroyElement(){
+    this.get('$destImg').off('load');
   },
 
   actions: {
@@ -46,9 +61,15 @@ export default Ember.Component.extend({
     },
     initialImageTranslate(event){
       run.later(() => {
-        this.send('mouseMove', event);
-        this.set('isHidden', false);
-      }, 500);
+        if(!this.get('hasLoaded')){
+          this.get('$destImg').load(() => {
+            this.setInitialTranslate(event);
+            this.set('hasLoaded', true);
+          });
+        } else {
+          this.setInitialTranslate(event);
+        }
+      }, 5);
     },
     toggle(prop){
       this.toggleProperty(prop);

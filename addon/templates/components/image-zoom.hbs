@@ -1,7 +1,6 @@
-{{showDetail}}
-
 <img
  {{action (action "toggle" "showDetail")}}
+ onclick={{action "initialImageTranslate"}}
  src={{small.src}}
  alt={{small.alt}}>
 
@@ -10,11 +9,11 @@
      <img
       {{action (action "toggle" "showDetail")}}
       onmousemove={{action "mouseMove"}}
-      onmouseenter={{action "initialImageTranslate"}}
       onclick={{action "toggle" "isHidden"}}
       class="{{if isHidden "hidden"}} image-zoom-detail" 
       src={{large.src}}
       srcset={{large.srcset}}
+      alt={{large.alt}}
       style={{style}}>
   {{/if}}
 {{/ember-wormhole}}
