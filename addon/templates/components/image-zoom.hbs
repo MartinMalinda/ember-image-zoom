@@ -1,0 +1,20 @@
+{{showDetail}}
+
+<img
+ onclick={{action "initialImageTranslate"}}
+ {{action (action "toggle" "showDetail")}}
+ src={{small.src}}
+ alt={{small.alt}}>
+
+{{#ember-wormhole to=wormholeDest}}
+  {{#if showDetail}}
+     <img
+      {{action (action "toggle" "showDetail")}}
+      onmousemove={{action "mouseMove"}}
+      onclick={{action "toggle" "isHidden"}}
+      class="{{if isHidden "hidden"}} image-zoom-detail" 
+      src={{large.src}}
+      srcset={{large.srcset}}
+      style={{style}}>
+  {{/if}}
+{{/ember-wormhole}}
