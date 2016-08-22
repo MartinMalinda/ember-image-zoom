@@ -1,7 +1,6 @@
 {{showDetail}}
 
 <img
- onclick={{action "initialImageTranslate"}}
  {{action (action "toggle" "showDetail")}}
  src={{small.src}}
  alt={{small.alt}}>
@@ -11,6 +10,7 @@
      <img
       {{action (action "toggle" "showDetail")}}
       onmousemove={{action "mouseMove"}}
+      onmouseenter={{action "initialImageTranslate"}}
       onclick={{action "toggle" "isHidden"}}
       class="{{if isHidden "hidden"}} image-zoom-detail" 
       src={{large.src}}
