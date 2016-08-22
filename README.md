@@ -1,10 +1,12 @@
 # Ember-image-zoom
 
 Component which toggles a full screen image view on click and provides translateY adjustment on mousemove.
+DEMO: https://martinmalinda.github.io/ember-image-zoom
 
 TODO:
 - Touch support
 - Checking if image is smaller than viewport
+- Add tests
 
 ## Install
 
