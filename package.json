@@ -1,7 +1,7 @@
 {
   "name": "ember-image-zoom",
   "version": "0.0.1",
-  "description": "The default blueprint for ember-cli addons.",
+  "description": "Component which toggles a full screen image view on click and provides translateY adjustment on mousemove.",
   "directories": {
     "doc": "doc",
     "test": "tests"
