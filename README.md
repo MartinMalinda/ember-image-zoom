@@ -1,26 +1,29 @@
 # Ember-image-zoom
 
-This README outlines the details of collaborating on this Ember addon.
+Component which toggles a full screen image view on click and provides translateY adjustment on mousemove.
 
-## Installation
+TODO:
+- Touch support
+- Checking if image is smaller than viewport
 
-* `git clone` this repository
-* `npm install`
-* `bower install`
+## Install
 
-## Running
+```
+ember install ember-image-zoom
+```
 
-* `ember serve`
-* Visit your app at http://localhost:4200.
+### Example usage
 
-## Running Tests
+```handlebars
+{{image-zoom
+  small=(hash
+    src="/images/image2-small.jpg"
+    alt="Small image")
+  large=(hash
+    src="/images/image2-full.jpg"
+    srcset="..."
+    alt="Large image" )
+}}
+```
 
-* `npm test` (Runs `ember try:testall` to test your addon against multiple Ember versions)
-* `ember test`
-* `ember test --server`
-
-## Building
-
-* `ember build`
-
-For more information on using ember-cli, visit [http://ember-cli.com/](http://ember-cli.com/).
+Component uses `ember-wormhole` and it creates a destination element if needed. Different destination element can be set with `wormholeDest` attr.
