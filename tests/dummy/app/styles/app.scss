@@ -1,0 +1,23 @@
+// .image-zoom {
+//   img {
+//     max-width: 100%;
+//   }
+// }
+
+.image-zoom-detail {
+  max-width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  cursor: pointer;
+
+  &.hidden {
+    visibility: hidden;
+  }
+}
+
+.image-zoom {
+  display: inline-block;
+  vertical-align: top;
+}
