@@ -10,7 +10,6 @@ export default Ember.Component.extend({
   showDetail: false,
   isHidden: true,
   windowHeight: null,
-  hasLoaded: false,
   wormholeDest: 'ember-image-zoom-wormhole-dest',
 
 
@@ -61,10 +60,10 @@ export default Ember.Component.extend({
     },
     initialImageTranslate(event){
       run.later(() => {
-        if(!this.get('hasLoaded')){
+        if(!this.get('large.hasLoaded')){
           this.get('$destImg').load(() => {
             this.setInitialTranslate(event);
-            this.set('hasLoaded', true);
+            this.set('large.hasLoaded', true);
           });
         } else {
           this.setInitialTranslate(event);
