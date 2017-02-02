@@ -5,15 +5,17 @@
  alt={{small.alt}}>
 
 {{#ember-wormhole to=wormholeDest}}
-  {{#if showDetail}}
-     <img
-      {{action (action "toggle" "showDetail")}}
-      onmousemove={{action "mouseMove"}}
-      onclick={{action "toggle" "isHidden"}}
-      class="{{if isHidden "hidden"}} image-zoom-detail" 
-      src={{large.src}}
-      srcset={{large.srcset}}
-      alt={{large.alt}}
-      style={{style}}>
-  {{/if}}
+  <div>
+    {{#if showDetail}}
+       <img
+        {{action (action "toggle" "showDetail")}}
+        onmousemove={{action "mouseMove"}}
+        onclick={{action "toggle" "isHidden"}}
+        class="{{if isHidden "hidden"}} image-zoom-detail" 
+        src={{large.src}}
+        srcset={{large.srcset}}
+        alt={{large.alt}}
+        style={{style}}>
+    {{/if}}
+  </div>
 {{/ember-wormhole}}

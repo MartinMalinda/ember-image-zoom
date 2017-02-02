@@ -61,7 +61,8 @@ export default Ember.Component.extend({
     initialImageTranslate(event){
       run.later(() => {
         if(!this.get('large.hasLoaded')){
-          this.get('$destImg').load(() => {
+          const $img = this.get('$destImg');
+          $img.load($img.attr('src'), [], () => {
             this.setInitialTranslate(event);
             this.set('large.hasLoaded', true);
           });
